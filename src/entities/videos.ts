@@ -1,8 +1,8 @@
-import { Entity, Column } from "typeorm";
-
+import { Entity, Column, PrimaryColumn, ManyToMany, JoinTable } from "typeorm";
+import { User } from "./User";
 @Entity("allVideos")
 export class videos{
-  @Column({unique:true})
+  @PrimaryColumn({unique:true})
   id:number;
 
   @Column()
@@ -19,4 +19,9 @@ export class videos{
 
   @Column()
   views:number;
+
+  @ManyToMany(()=>User)
+  @JoinTable({name:"userWatchlist"})
+  watchList:User[];
+
 }

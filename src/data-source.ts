@@ -6,7 +6,7 @@ export const AppDataSource = new DataSource({
   port: 5432,
   username: "postgres",
   password: "1234",
-  database: "Tring_stream",
+  database: "Tring_streams",
   synchronize: false,  
   logging: true,
   entities: ["src/entities/**/*.ts"],
@@ -14,8 +14,3 @@ export const AppDataSource = new DataSource({
   subscribers: ["src/subscriber/**/*.ts"]
 });
 
-AppDataSource.initialize()
-  .then(() => {
-    console.log("Database Connected Successfully!");
-  })
-  .catch((error) => console.log("Database Connection Failed!", error));

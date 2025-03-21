@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
+import { videos } from "./videos";
 enum gender{
   male,
   female
@@ -35,4 +35,8 @@ export class User {
 
   @Column()
   profilePicture:string;
+
+  @ManyToMany(()=>videos)
+  @JoinTable({ name: "userWatchlist" })
+  watchList:videos[];
 }
