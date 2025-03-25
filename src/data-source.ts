@@ -9,8 +9,8 @@ export const AppDataSource = new DataSource({
   database: "Tring_streams",
   synchronize: false,  
   logging: true,
-  entities: ["src/entities/**/*.ts"],
-  migrations: ["src/migrations/**/*.ts"],
+  entities: ["src/db/entities/**/*.ts"],
+  migrations: ["src/db/migrations/**/*.ts"],
   subscribers: ["src/subscriber/**/*.ts"]
 });
 

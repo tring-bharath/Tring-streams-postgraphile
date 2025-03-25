@@ -39,4 +39,8 @@ export class User {
   @ManyToMany(()=>videos)
   @JoinTable({ name: "userWatchlist" })
   watchList:videos[];
+
+  @ManyToMany(()=>videos)
+  @JoinTable({name:"userHistory"})
+  history:videos[];
 }

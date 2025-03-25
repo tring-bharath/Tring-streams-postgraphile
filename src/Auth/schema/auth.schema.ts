@@ -9,12 +9,8 @@ export const authSchema = gql`
 
 extend type Mutation {
   login(email: String!, password: String!): LoginPayload
-  register(firstName: String!,email: String!, password: String! ): String
+  register(firstName: String!,lastName:String!,email: String!, password: String! ): String
 }
 
-type RegisterPayload {
-  message: String!
-  user: User
-}
 
 `;

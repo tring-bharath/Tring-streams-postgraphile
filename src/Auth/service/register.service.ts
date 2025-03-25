@@ -1,11 +1,11 @@
 import { AppDataSource } from "../../data-source";
-import { User } from "../../entities/User";
+import { User } from "../../db/entities/User";
 const bcrypt =require('bcrypt');
 
 export const registerService=async (args:any)=>
     {
         const userRepo=AppDataSource.getRepository(User)
-        const { firstName,email, password } = args;   
+        const { firstName,lastName,email, password } = args;   
         const user = await userRepo.findOne({ where: { email } });
     
         if (user) {
@@ -15,6 +15,7 @@ export const registerService=async (args:any)=>
         const userDetails=userRepo.create({
             email,
             firstName,
+            lastName,
             password:hashedPassword
         })
 
