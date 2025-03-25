@@ -1,5 +1,5 @@
-import { loginService } from "../service/login.service";
-import { registerService } from "../service/register.service";
+import { loginService } from "../service/loginService";
+import { registerService } from "../service/registerService";
 export const authResolver = {
 
   Mutation: {

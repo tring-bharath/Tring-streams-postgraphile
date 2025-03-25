@@ -2,7 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import 'dotenv/config';
 import { AppDataSource } from "./data-source";
-import { authPlugin } from "./Auth/plugin/auth.plugin";
+import { authPlugin } from "./auth/plugin/authPlugin";
 import  jwt  from "jsonwebtoken";
 const {postgraphile} = require('postgraphile');
 const app = express();
