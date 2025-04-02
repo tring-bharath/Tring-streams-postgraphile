@@ -11,7 +11,7 @@ export const loginService=async (args:any)=>
     const user = await userRepo.findOne({ where: { email } });
 
     if (!user) {
-      throw new Error("User not found");
+      throw new Error ("User not found");
     }
     
     const isValidPassword = await bcrypt.compare(password, user.password);
@@ -19,10 +19,7 @@ export const loginService=async (args:any)=>
       throw new Error("Invalid password");
     }
 
-    const token = jwt.sign({ userId: user.id },key!, {expiresIn: "1d"});
+    const token = jwt.sign({ userId: user.id },key!, {expiresIn: "24h"});
 
-    return {
-      user,
-      token,
-    };
+    return token;
 }

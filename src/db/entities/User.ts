@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
 import { videos } from "./videos";
 enum gender{
-  male,
-  female
+  male="MALE",
+  female="FEMALE"
 }
 @Entity()
 export class User {
@@ -18,23 +18,26 @@ export class User {
   @Column()
   password!: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastName:string;
 
-  @Column()
+  @Column({ nullable: true })
   location:string;
 
-  @Column()
+  @Column({ nullable: true })
   phoneNumber:string;
 
-  @Column()
+  @Column({ nullable: true })
   dateOfBirth:Date;
 
-  @Column()
+  @Column({ nullable: true,type:"enum",enum:gender })
   gender:gender;
 
-  @Column()
+  @Column({ nullable: true })
   profilePicture:string;
+
+  @Column({nullable:true})
+  bio:string;
 
   @ManyToMany(()=>videos)
   @JoinTable({ name: "userWatchlist" })

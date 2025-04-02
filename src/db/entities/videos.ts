@@ -5,19 +5,19 @@ export class videos{
   @PrimaryColumn({unique:true})
   id:number;
 
-  @Column()
+  @Column({nullable:true})
   tags:string;
 
-  @Column()
+  @Column({select:false,nullable:true})
   videoURL:string;
 
-  @Column()
+  @Column({nullable:true})
+  likes:Number;
+
+  @Column({nullable:true})
   thumbnail:string;
 
-  @Column()
-  likes:number;
-
-  @Column()
+  @Column({nullable:true})
   views:number;
 
   @ManyToMany(()=>User)
