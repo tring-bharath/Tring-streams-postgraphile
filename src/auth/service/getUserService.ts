@@ -5,7 +5,7 @@ export const getUserService= async (args:any)=>
 {
     const {userId}=args;
     const userRepo=AppDataSource.getRepository(User);
-    const user=await userRepo.findOne({where:userId});
-    console.log({...user});
+    const user=await userRepo.findOne({where:{id:userId}});
+    console.log(">>>>>>>>>>>>>>>",user);
     return {...user}
 }

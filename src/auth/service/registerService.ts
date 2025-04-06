@@ -9,7 +9,7 @@ export const registerService=async (args:any)=>
         const user = await userRepo.findOne({ where: { email } });
         console.table(args);
         if (user) {
-          return "Email already Exists";
+          throw new Error("Email already Registered");
         }
         const hashedPassword= await bcrypt.hash(password,10);
         const userDetails=userRepo.create({

@@ -26,6 +26,8 @@ extend type Mutation {
   login(email: String!, password: String!):String
   register(firstName: String!,lastName:String!,email: String!, password: String! ): String
   logout:String 
+  sendOtp(email:String!):String
+  checkOtp(email:String!,otp:Int!):String
 }
 
 

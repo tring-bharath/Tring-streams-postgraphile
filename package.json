@@ -25,6 +25,7 @@
     "express": "^4.21.2",
     "graphql": "^15.10.1",
     "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.10.0",
     "nodemon": "^3.1.9",
     "pg": "^8.14.1",
     "postgraphile": "^4.14.0",

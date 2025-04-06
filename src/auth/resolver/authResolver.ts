@@ -3,6 +3,7 @@ import { getUserService } from "../service/getUserService";
 import { loginService } from "../service/loginService";
 import { registerService } from "../service/registerService";
 import { setCookie } from "../../db/setCookie";
+import { checkOtpService, sendOtpService } from "../service/otpService";
 export const authResolver = {
   Query:
   {
@@ -17,8 +18,8 @@ export const authResolver = {
 
     login: async (_: any, args: any, context: any) => {
       const { res } = context;
+
       const result = await loginService(args);
-      console.log("result >>>", result);
 
       setCookie(res, result)
       return "login Successful";
@@ -28,11 +29,22 @@ export const authResolver = {
       return registerService(args);
     },
 
-    logout:async(_:any,args:any,context:any)=>{
-      const {res}=context
+    logout: async (_: any, args: any, context: any) => {
+      const { res } = context
       await res.clearCookie("jwtToken");
       return "logout successful"
-  },
+    },
+
+    sendOtp: async(_:any,args:any)=>
+    {
+      return sendOtpService(args.email);
+    },
+
+    checkOtp:async(_:any,args:any)=>
+    {
+      console.log(args);
+      return checkOtpService(args);
+    }
 
   }
 };
