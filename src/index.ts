@@ -3,7 +3,6 @@ import express from "express";
 import 'dotenv/config';
 import { AppDataSource } from "./data-source";
 import { authPlugin } from "./auth/plugin/authPlugin";
-import  jwt  from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import { additionalGraphQLContextFromRequest } from "./auth/auth";
 import ConnectionFilterPlugin from "postgraphile-plugin-connection-filter";
@@ -24,7 +23,7 @@ app.use(cookieParser());
       graphiql: true,
       enhanceGraphiql: true,
       dynamicJson: true, 
-      // enableCors: true,
+      enableCors: true,
       appendPlugins: [authPlugin,ConnectionFilterPlugin,allVideosPlugin],
       disableDefaultMutations: false,  
       showErrorStack: true,

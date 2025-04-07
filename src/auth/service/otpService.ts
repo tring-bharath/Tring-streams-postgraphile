@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../data-source";
-import { OtpEntity } from "../../db/entities/otpEntity";
-import { User } from "../../db/entities/User";
+import { OtpEntity } from "../entities/otpEntity";
+import { User } from "../entities/User";
 const nodemailer = require("nodemailer");
 
 export const sendOtpService = async (email: string) => {
@@ -11,19 +11,19 @@ export const sendOtpService = async (email: string) => {
         throw new Error("user not Registered")
     }
     const otp = Math.floor(Math.random() * 10000);
-    const newOtp =otpRepo.create({otp,email})
+    const newOtp = otpRepo.create({ otp, email })
     otpRepo.save(newOtp);
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 587,
         secure: false,
         auth: {
-          user: "bharath7010467677@gmail.com",
-          pass: "mllk opdr jwfb mmko",
+            user: "bharath7010467677@gmail.com",
+            pass: "mllk opdr jwfb mmko",
         },
-      });
-  
-      const mailOptions = {
+    });
+
+    const mailOptions = {
         from: "bharath7010467677@gmail.com",
         to: email,
         subject: "Tring-Streams - Forgot Password OTP",
@@ -35,19 +35,18 @@ export const sendOtpService = async (email: string) => {
           <h3 style="font-size: 24px; color: #000;">${otp}</h3>
         </div>
       `,
-      };
-    try{
-        transporter.sendMail(mailOptions, (error:any, info:any) => {
+    };
+    try {
+        transporter.sendMail(mailOptions, (error: any, info: any) => {
             console.log(info);
             if (error) {
                 throw new Error(error);
             } else {
-              return "OTP sent successfully";
+                return "OTP sent successfully";
             }
-          });
+        });
     }
-    catch(err)
-    {
+    catch (err) {
         return err
     }
     return "otp sent"
@@ -59,7 +58,7 @@ export const checkOtpService = async (args: any) => {
     console.log(userOtp);
     console.log(userOtp?.otp == otp);
     if (userOtp?.otp == otp) {
-        otpRepo.delete({email});
+        otpRepo.delete({ email });
         return "OTP Verified";
     }
     else {

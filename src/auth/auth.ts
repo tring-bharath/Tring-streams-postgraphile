@@ -9,8 +9,6 @@ export const additionalGraphQLContextFromRequest = async (req: any,res:any) => {
   else 
   {
     try {
-      
-      console.log(">>>>>>>>>>>>>>>>>",req?.cookies?.jwtToken);
       const decodedId = jwt.verify(req?.cookies?.jwtToken, SECRET_KEY!);
       
       return { user: decodedId,req,res };

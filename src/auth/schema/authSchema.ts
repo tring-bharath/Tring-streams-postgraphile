@@ -28,6 +28,7 @@ extend type Mutation {
   logout:String 
   sendOtp(email:String!):String
   checkOtp(email:String!,otp:Int!):String
+  resetPassword(email:String!,password:String!):String
 }
 
 

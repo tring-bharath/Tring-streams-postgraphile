@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
-import { User } from "./db/entities/User";
-import { videos } from "./db/entities/videos";
-import { OtpEntity } from "./db/entities/otpEntity";
+import { User } from "./auth/entities/User";
+import { videos } from "./allVideos/entities/videos";
+import { OtpEntity } from "./auth/entities/otpEntity";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -10,9 +10,9 @@ export const AppDataSource = new DataSource({
   username: "postgres",
   password: "1234",
   database: "Tring_streams",
-  synchronize: false,  
+  synchronize: false,
   logging: true,
-  entities: [User,videos,OtpEntity],
+  entities: [User, videos, OtpEntity],
   migrations: ["src/db/migrations/**/*.ts"],
   subscribers: ["src/subscriber/**/*.ts"]
 });
