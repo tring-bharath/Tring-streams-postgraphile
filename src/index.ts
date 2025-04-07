@@ -23,7 +23,7 @@ app.use(cookieParser());
       graphiql: true,
       enhanceGraphiql: true,
       dynamicJson: true, 
-      enableCors: true,
+      // enableCors: true,
       appendPlugins: [authPlugin,ConnectionFilterPlugin,allVideosPlugin],
       disableDefaultMutations: false,  
       showErrorStack: true,
